@@ -1,14 +1,22 @@
 import pathlib
 
 from jinja2 import PackageLoader
-from render_engine.utils.themes import Theme
+from render_engine.themes import Theme
+
+from .plugins import LunrPlugin
+
 # Add plugins here
 
-Lunr = Theme(
-    loader=PackageLoader(f"render_engine_lunr", "templates"),
-    static_dir= pathlib.Path(__file__).parent / "static",
-    plugins = [],
+
+LunrTheme = Theme(
+    loader=PackageLoader("render_engine_lunr", "templates"),
+    plugins = [LunrPlugin],
     filters = {},
-    prefix = 'lunr',
-    template_globals = {"head": "lunrjs_head.html"}
+    prefix = 'lunrjs',
+    template_globals={
+            "head": "components/lunrjs/lunrjs_head.html",
+            "lunrjs_path": "https://unpkg.com/lunr/lunr.js",
+            "corpus_filename": 'corpus.json',
+            "search_index_filename": 'lunr_index.json',
+    }
 )

@@ -3,7 +3,7 @@ requires = ["setuptools", "setuptools_scm", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "render-engine-lunr"
+name = "render_engine_lunr"
 dynamic = ["version"]
 description = "Plugin and theme for Lunr.js"
 readme = "README.md"

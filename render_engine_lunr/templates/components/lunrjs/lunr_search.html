@@ -1,0 +1,55 @@
+{% macro search_form() %}
+<form action="javascript:void(0);" onsubmit="search()">
+    <input type="text" id="lunrSearchInput" placeholder="Search..." oninput="updateSearchResults()">
+    <button type="submit" id="lunrSearchButton">Search</button>
+</form>
+{% endmacro %}
+
+{% macro search_script(corpus="/corpus.json", search_index="/lunr_index.json") %}
+<script>
+var idx = fetch("{{search_index}}", )
+    .then(response => response.json())
+    .then(data => {
+        return idx = lunr.Index.load(data);
+    })
+    .catch(error => {
+        console.error('Error fetching {{search_index}}:', error);
+    });
+
+var searchIndex = fetch("{{corpus}}")
+    .then(response => response.json())
+    .then(data => { 
+        return searchIndex = data;
+    })
+    .catch(error => {
+        console.error('Error fetching {{corpus}}:', error);
+    });
+
+function updateSearchResults() {
+    search();
+}
+
+function search() {
+    // Get the value for the text field
+    var query = document.getElementById('lunrSearchInput').value;
+    // run the query
+    var result = idx.search(query);
+    // Update the list with the search results
+
+    var searchResults = document.getElementById('lunrSearchResults');
+    searchResults.innerHTML = '';
+    if (result.length > 0) {
+        for (var item in result) {
+            var entry = searchIndex[result[item]['ref']] 
+            var url = entry.url
+            var title = entry.title;
+            var searchItem = document.createElement('div');
+            searchItem.innerHTML = '<a href="' + url + '">' + title + '</a>';
+            searchResults.appendChild(searchItem);
+        }
+    } else {
+        searchResults.innerHTML = 'No results found';
+    }
+}
+</script>
+{% endmacro %}
