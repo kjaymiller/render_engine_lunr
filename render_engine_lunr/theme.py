@@ -1,12 +1,7 @@
-import pathlib
-
 from jinja2 import PackageLoader
 from render_engine.themes import Theme
 
 from .plugins import LunrPlugin
-
-# Add plugins here
-
 
 LunrTheme = Theme(
     loader=PackageLoader("render_engine_lunr", "templates"),
