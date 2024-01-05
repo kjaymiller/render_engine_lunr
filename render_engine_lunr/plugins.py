@@ -65,6 +65,7 @@ class LunrPlugin:
 
         # Create the corpus
         corpus_path = pathlib.Path(site.output_path).joinpath(lunr_settings['corpus_filename'])
+        pathlib.Path(site.output_path).mkdir(parents=True, exist_ok=True)
         logging.info("Creating corpus at: %s", corpus_path)
         with open(str(corpus_path), 'w') as corpus:
             json.dump(index, corpus)
