@@ -37,8 +37,8 @@ jobs:
         uses: actions/setup-python@v5
       - name: Run Render Engine
         run: |
-          pip install -r requirements.txt
-          pip install "{{cookiecutter.project_name}}"
+          pip install --upgrade pip
+          pip install ".[dev]"
           render-engine build docs.app:app
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
