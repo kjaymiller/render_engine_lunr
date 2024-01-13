@@ -2,18 +2,14 @@ from render_engine.collection import Collection
 from render_engine.page import Page
 from render_engine.parsers.markdown import MarkdownPageParser
 from render_engine.site import Site
-
-from render_engine_lunr import {{cookiecutter.theme_name | capitalize | replace(' ', '')}}
+from render_engine_lunr import LunrTheme
 
 app = Site()
-app.output_path = "docs/output"
+app.output_path = "./docs/output"
+app.template_path = "./docs/templates"
 app.site_vars.update ({
-    "SITE_TITLE": f"{{cookiecutter.theme_name | capitalize | replace(' ', '')}}",
+    "SITE_TITLE": f"Render Engine Lunr Theme",
     "SITE_URL": "https://kjaymiller.github.io/render_engine_theme_kjaymiller/",
-    "OWNER": {
-        "name": f"kjaymiller",
-        "email": f"kjaymiller@gmail.com",
-    },
     "NAVIGATION": [
         {
             "text": "Docs",
@@ -24,9 +20,12 @@ app.site_vars.update ({
             "url": "https://github.com/kjaymiller/render_engine_kjaymiller_theme",
         }    
     ],
-    "theme": {}
+    "head": [
+        "pico.html"
+    ],
 })
-app.register_themes({{cookiecutter.theme_name | capitalize | replace(' ', '')}})
+
+
 
 @app.collection
 class Docs(Collection):
@@ -35,7 +34,6 @@ class Docs(Collection):
     Parser = MarkdownPageParser
     parser_extras = {"markdown_extras": ["fenced-code-blocks", "codehilite", "header-ids"]}
     has_archive = True
-    archive_template = "blog_list.html"
 
 @app.page
 class Index(Page):
