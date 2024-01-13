@@ -4,16 +4,18 @@ from render_engine.parsers.markdown import MarkdownPageParser
 from render_engine.site import Site
 from render_engine_lunr import LunrTheme
 
+
+SITE_URL = "https://kjaymiller.github.io/render_engine_theme_kjaymiller/"
 app = Site()
 app.output_path = "./docs/output"
 app.template_path = "./docs/templates"
 app.site_vars.update ({
-    "SITE_TITLE": f"Render Engine Lunr Theme",
-    "SITE_URL": "https://kjaymiller.github.io/render_engine_theme_kjaymiller/",
+    "SITE_TITLE": f"Render Engine Lunr Theme and Plugin",
+    "SITE_URL": SITE_URL,
     "NAVIGATION": [
         {
             "text": "Docs",
-            "url": "/docs.html",
+            "url": f"{SITE_URL}/docs.html",
         },
         {
             "test": "GitHub",
