@@ -5,7 +5,7 @@ from render_engine.site import Site
 from render_engine_lunr import LunrTheme
 
 
-SITE_URL = "https://kjaymiller.github.io/render_engine_theme_kjaymiller/"
+SITE_URL = "https://kjaymiller.github.io/render_engine_lunr/"
 app = Site()
 app.output_path = "./docs/output"
 app.template_path = "./docs/templates"
@@ -34,7 +34,7 @@ class Docs(Collection):
     content_path = 'docs/pages'
     template = "page.html"
     Parser = MarkdownPageParser
-    parser_extras = {"markdown_extras": ["fenced-code-blocks", "codehilite", "header-ids"]}
+    parser_extras = {"markdown_extras": ["fenced-code-blocks", "codehilite", "header-ids", "tables"]}
     has_archive = True
 
 @app.page
