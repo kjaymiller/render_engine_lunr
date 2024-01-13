@@ -19,7 +19,7 @@ app.site_vars.update ({
         },
         {
             "test": "GitHub",
-            "url": "https://github.com/kjaymiller/render_engine_kjaymiller_theme",
+            "url": "https://github.com/kjaymiller/render_engine_lunr",
         }    
     ],
     "head": [
