@@ -2,8 +2,8 @@ from render_engine.collection import Collection
 from render_engine.page import Page
 from render_engine.parsers.markdown import MarkdownPageParser
 from render_engine.site import Site
-from render_engine_lunr import LunrTheme
 
+from render_engine_lunr import LunrTheme
 
 SITE_URL = "https://kjaymiller.github.io/render_engine_lunr/"
 app = Site()
