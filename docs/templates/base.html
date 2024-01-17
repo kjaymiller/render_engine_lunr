@@ -2,7 +2,7 @@
 {% block header %}
 <nav class="container">
     <ul>
-        <li><a href="/">Home</a></li>
+        <li><a href="{{SITE_URL}}">Home</a></li>
         {% for link in NAVIGATION %}
         <li><a href="{{link.url}}">{{link.text}}</a></li>
         {% endfor %}
